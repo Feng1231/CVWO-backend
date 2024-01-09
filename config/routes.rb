@@ -1,10 +1,25 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  patch :change_password, to: 'sign_up#change_password'
+  patch :logout, to: 'sessions#destroy'
+  get :logged_in, to: 'sessions#logged_in'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  resources :comment, only: %i[show create update destroy]
+  resources :post, only: %i[show create update destroy] do
+    member do
+      patch :pin_post, to: 'posts#pin_post'
+    end
+  end
+  resources :category, only: %i[index create update destroy] do
+    collection do
+      get '/all', to: 'forum#index_all'
+      get '/:forum', to: 'forum#show_by_forum'
+    end
+  end
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :sign_up, only: %i[create], controller: 'sign_up'
+  resources :log_in, only: %i[create], controller: 'sessions'
+  resources :users, only: %i[index show] 
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
