@@ -6,11 +6,12 @@ class SignUpController < ApplicationController
     # Register a new user account
     def create
         user = User.create!(sign_up_params)
-        user.update_attribute(:admin_level, 1) if User.all.size <= 1
-        end
+        puts "User count: #{User.count}"
+        user.update(admin_level: 1) if User.count <= 1
+
         json_response({ message: 'Account registered!' },
                     :created)
-        url = 'https://arn-frontend.netlify.app/SignIn'
+        url = 'localhost:3001/SignIn'
         redirect_to url
     end
 
@@ -43,12 +44,12 @@ class SignUpController < ApplicationController
     def sign_up_params
     # whitelist params
     params.require(:user)
-            .permit(:username, :password, :confirmPassword)
+            .permit(:username, :password, :password_confirmation)
     end
 
     def password_params
     # whitelist params
     params.require(:user)
-            .permit(:password, :confirmPassword)
+            .permit(:password, :password_confirmation)
     end
 end

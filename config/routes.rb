@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   end
   resources :category, only: %i[index create update destroy] do
     collection do
-      get '/all', to: 'forum#index_all'
-      get '/:forum', to: 'forum#show_by_forum'
+      get '/all', to: 'category#index_all'
+      get '/:category', to: 'category#show_by_category'
     end
   end
 
