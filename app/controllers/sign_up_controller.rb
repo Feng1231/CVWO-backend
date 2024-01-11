@@ -6,13 +6,10 @@ class SignUpController < ApplicationController
     # Register a new user account
     def create
         user = User.create!(sign_up_params)
-        puts "User count: #{User.count}"
         user.update(admin_level: 1) if User.count <= 1
 
         json_response({ message: 'Account registered!' },
                     :created)
-        url = 'localhost:3001/SignIn'
-        redirect_to url
     end
 
     #change password

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-    before_action :authorized_user?, except: :create
+    before_action :authorized_user?, except: [:create, :retrieve]
 
     # When a user attempts to log in
     def create
@@ -11,10 +11,11 @@ class SessionsController < ApplicationController
     
         authenticate_user(user)
     end
-  
+    
+
     # When a user logs out, remove authorization token
     def destroy
-        @current_user.update(token: nil)
+        @current_user.update_attribute(:token, nil)
         json_response(user: { logged_in: false })
     end
   
@@ -22,7 +23,17 @@ class SessionsController < ApplicationController
     def logged_in
         json_response(user: user_status(@current_user))
     end
-  
+    
+    def retrieve
+        token = request.headers['Authorization']
+        @user = User.find_by(token: token)
+
+        if @user 
+            json_response(user: user_status(@user))
+        else
+            json_response({errors: 'User not found' }, 404)
+        end
+    end 
     private
   
     # Returns a Hash with additional keys for Front-End use

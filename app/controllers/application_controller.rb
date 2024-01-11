@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     include TokenGenerator
 
     def authorized_user?
-        json_response({ errors: 'Account not Authorized' }, 401) unless current_user
+        json_response({ errors: 'Logged Out' }, 401) unless current_user
     end
 
     def authorized_admin?

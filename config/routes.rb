@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   patch :change_password, to: 'sign_up#change_password'
   patch :logout, to: 'sessions#destroy'
   get :logged_in, to: 'sessions#logged_in'
-
+  get :retrieve, to: 'sessions#retrieve'
+  
   resources :comment, only: %i[show create update destroy]
   resources :post, only: %i[show create update destroy] do
     member do

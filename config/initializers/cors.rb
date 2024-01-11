@@ -27,7 +27,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       resource '/post/pin_post', headers: :any, methods: %i[patch]
       resource '/comment', headers: :any, methods: %i[post]
       resource '/comment/*', headers: :any, methods: %i[get patch delete]
-  
+      resource '/retrieve', headers: :any, methods: %i[get]
+      
       resource '*', headers: :any, methods: allowed_methods, credentials: false
     end
   end
