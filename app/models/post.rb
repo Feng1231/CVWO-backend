@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   has_many :comments, dependent: :destroy
   validates :title, length: { in: 3..50 }, presence: true
-  validates :body, length: { in: 8..5000 }, presence: true
+  validates :body, length: { in: 8..2000 }, presence: true
   scope :pins, -> { where('is_pinned = true') }
   scope :not_pinned, -> { where('is_pinned = false') }
 
@@ -17,7 +17,7 @@ class Post < ApplicationRecord
   def self.author_posts_json(posts_array)
     returned_posts = []
     posts_array.each do |post|
-      new_post = post.as_json(only: %i[id user_id is_pinned created_at])
+      new_post = post.as_json(only: %i[id user_id is_pinned created_at updated_at])
       new_post['title'] = post.title.slice(0..30)
       new_post['body'] = post.body.slice(0..32)
       new_post['author'] = post.author.username

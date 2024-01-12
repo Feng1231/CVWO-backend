@@ -43,7 +43,7 @@ class PostController < ApplicationController
     end
     
     def pin_post
-        if @post.update(is_pinned: !@post.is_pinned)
+        if @post.update_column(:is_pinned, !@post.is_pinned)
             json_response(post: @post.post_json)
         else
             json_response({ errors: @post.errors.full_messages }, 401)
@@ -51,12 +51,12 @@ class PostController < ApplicationController
     end
 
     private 
-    
+
     def set_post
         @post = Post.find(params[:id])
-      end
+    end
     
     def post_params
-        params.require(:post).permit(:title, :body, :is_pinned, :forum_id)
+        params.require(:post).permit(:title, :body, :is_pinned, :category_id)
     end
 end

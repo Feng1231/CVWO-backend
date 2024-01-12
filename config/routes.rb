@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   patch :logout, to: 'sessions#destroy'
   get :logged_in, to: 'sessions#logged_in'
   get :retrieve, to: 'sessions#retrieve'
-  
+
   resources :comment, only: %i[show create update destroy]
   resources :post, only: %i[show create update destroy] do
     member do
-      patch :pin_post, to: 'posts#pin_post'
+      patch :pin_post, to: 'post#pin_post'
     end
   end
   resources :category, only: %i[index create update destroy] do
