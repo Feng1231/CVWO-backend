@@ -28,7 +28,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       resource '/comment', headers: :any, methods: %i[post]
       resource '/comment/*', headers: :any, methods: %i[get patch delete]
       resource '/retrieve', headers: :any, methods: %i[get]
-      
+      resource '/sign_up/:id', headers: :any, methods: %i[delete]
+
       resource '*', headers: :any, methods: allowed_methods, credentials: false
     end
   end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   patch :logout, to: 'sessions#destroy'
   get :logged_in, to: 'sessions#logged_in'
   get :retrieve, to: 'sessions#retrieve'
+  delete '/sign_up/:id', to: 'sign_up#destroy'
 
   resources :comment, only: %i[show create update destroy]
   resources :post, only: %i[show create update destroy] do
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
   resources :sign_up, only: %i[create], controller: 'sign_up'
   resources :log_in, only: %i[create], controller: 'sessions'
   resources :users, only: %i[index show] 
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

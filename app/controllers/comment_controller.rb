@@ -21,28 +21,28 @@ class CommentController < ApplicationController
     end
 
     def update
-    # Only allow owner to update comment
-    unless @comment.author == @current_user
-        return json_response({ errors: 'Account not Authorized' }, 401)
-    end
+        # Only allow owner to update comment
+        unless @comment.author == @current_user
+            return json_response({ errors: 'Account not Authorized' }, 401)
+        end
 
-    if @comment.update(comment_params)
-        json_response({ comment: @comment,
-                        comments: Post.author_comments_json(@post.comments) })
-    else
-        json_response({ errors: @comment.errors.full_messages }, 401)
-    end
+        if @comment.update(comment_params)
+            json_response({ comment: @comment,
+                            comments: Post.author_comments_json(@post.comments) })
+        else
+            json_response({ errors: @comment.errors.full_messages }, 401)
+        end
     end
 
     def destroy
-    # Only allow the owner or admin to destroy the comment
-    unless @comment.author == @current_user || @current_user.admin_level = 1
-        return json_response({ errors: 'Account not Authorized' }, 401)
-    end
+        # Only allow the owner or admin to destroy the comment
+        unless @comment.author == @current_user || @current_user.admin_level == 1
+            return json_response({ errors: 'Account not Authorized' }, 401)
+        end
 
-    @comment.destroy
-    json_response({ message: 'Comment deleted',
-                    comments: Post.author_comments_json(@post.comments) })
+        @comment.destroy
+        json_response({ message: 'Comment deleted',
+                        comments: Post.author_comments_json(@post.comments) })
     end
 
     private
