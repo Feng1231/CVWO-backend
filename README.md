@@ -6,22 +6,14 @@ PostgreSQL Back-end database built with Ruby on Rails linked to a [Front-end sys
 - node.js
 - npm
 - PostgreSQL
+- Ruby
 
 ## Installing gemfiles
 ### Ruby version
 This project is built with Ruby 3.2.2
-```
-rbenv install 3.2.2
-```
-
 ensure you are using the desired Ruby version to install.
 ```
 ruby --version
-```
-
-set ruby default version
-```
-rbenv global 3.2.2
 ```
 
 ### Bundler version
