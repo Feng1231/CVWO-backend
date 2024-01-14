@@ -27,7 +27,7 @@ rbenv global 3.2.2
 ### Bundler version
 Bundler manages gems, but the mismatch of bundler version may cause an error to occur. If you already have Bundler ( bundler — version), you could skip this section and see if it works. If an error that relates to Bundler versions occurs, an older or newer version may be required.
 
-This project uses bundler version 2.4.22.
+This project uses bundler version 2.4.22
 
 check bundler version
 ```
@@ -38,7 +38,7 @@ This will install the bundler gem in Ruby 3.2.2
 ```
 gem install bundler -v 2.4.22
 ```
-2.4.22
+
 
 ### Install the required gems
 
