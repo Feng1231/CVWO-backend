@@ -9,8 +9,8 @@
 # Read more: https://github.com/cyu/rack-cors
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
-    # url = Rails.env == 'production' ? 'https://arn-forum-cms.netlify.app' : 'http://localhost:3001'
-    url = Rails.env == 'production' ? '*' : 'http://localhost:3001'
+    # url = Rails.env == 'production' ? 'https://discum-forum.netlify.app' : 'http://localhost:3001'
+    url = 'https://discum-forum.netlify.app'
     allowed_methods = %i[get options head]
     allow do
       origins url
