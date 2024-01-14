@@ -23,7 +23,7 @@ This project uses bundler version 2.4.22
 
 check bundler version
 ```
-bundler version
+bundler --version
 ```
 
 This will install the bundler gem in Ruby 3.2.2
