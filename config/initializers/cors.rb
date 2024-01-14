@@ -10,8 +10,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     # url = Rails.env == 'production' ? 'https://discum-forum.netlify.app' : 'http://localhost:3001'
-    # url = 'https://discum-forum.netlify.app'
-    url = 'http://localhost:3000'
+    url = 'https://discum-forum.netlify.app'
+    # url = 'http://localhost:3000'
     allowed_methods = %i[get options head]
     allow do
       origins url
