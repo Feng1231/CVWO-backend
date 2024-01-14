@@ -52,6 +52,7 @@ bundle install
 
 ## Database 
 * ensure you have your default postgresql user and password configured in '/config/database.yml', make changes to the user and password accordingly if needed.
+* ensure url in '/config/initializers/cors.rb' is correctly configured to be your frontend base url.
 
 create database
 ```
@@ -68,3 +69,8 @@ start your server
 ```
 rails s
 ```
+
+## Author
+
+- Github: [@Feng1231](https://github.com/Feng1231)
+- Linkedin: [Chen Feng](https://www.linkedin.com/in/feng-chen-356221289/)
