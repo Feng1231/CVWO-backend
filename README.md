@@ -8,6 +8,9 @@ PostgreSQL Back-end database built with Ruby on Rails linked to a [Front-end sys
 - PostgreSQL
 - Ruby
 
+## Set up this project
+Start by downloading the zip file of this project into your computer
+
 ## Installing gemfiles
 ### Ruby version
 This project is built with Ruby 3.2.2
