@@ -34,11 +34,8 @@ class CategoryController < ApplicationController
   
     def create
       category = Category.create!(category_params)
-      if category.save
-        json_response(categories: Category.category_all_json)
-      else 
-        json_response({ errors: category.errors.full_messages }, 401)
-      end
+
+      json_response(categories: Category.category_all_json)
     end
 
     def update
