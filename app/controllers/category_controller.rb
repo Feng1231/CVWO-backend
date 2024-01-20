@@ -38,8 +38,7 @@ class CategoryController < ApplicationController
         json_response(categories: Category.category_all_json)
       else 
         json_response({ errors: category.errors.full_messages }, 401)
-
-      
+      end
     end
 
     def update
